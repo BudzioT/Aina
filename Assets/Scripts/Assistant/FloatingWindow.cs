@@ -1,9 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Diagnostics;
+using UnityEngine.EventSystems;
 
 public class FloatingWindow : MonoBehaviour
 {
+    public TextMeshProUGUI debug;
+    private DebugLabel debugText;
+    
     // Windows DLL stuff cause Unity doesn't support transparent windows
 #if UNITY_STANDALONE_WIN
     // Dialog - Windows only
@@ -36,6 +43,9 @@ public class FloatingWindow : MonoBehaviour
     
     // Top window ID
     private static readonly IntPtr WIN_HANDLER_TOP = new IntPtr(-1);
+    
+    // Prepare + render the above window
+    private IntPtr WinHandle;
 #endif
     
     void Start()
@@ -48,22 +58,74 @@ public class FloatingWindow : MonoBehaviour
         
         // Apparently Unity crashes when you use these API methods in Editor lol
 //#if !UNITY_EDITOR
-        // Prepare + render the above window
-        IntPtr winHandle = GetActiveWindow();
+        WinHandle = GetActiveWindow();
+
         MARGINS margins = new MARGINS { cxLeftWidth = -1 };
-        DwmExtendFrameIntoClientArea(winHandle, ref margins);
+        DwmExtendFrameIntoClientArea(WinHandle, ref margins);
 
         // Make it fast & click-through
-        SetWindowLong(winHandle, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        SetWindowLong(WinHandle, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
 
-        SetWindowPos(winHandle, WIN_HANDLER_TOP, 0, 0, 0, 0, 0);
+        SetWindowPos(WinHandle, WIN_HANDLER_TOP, 0, 0, 0, 0, 0);
 //#endif
 #endif
+
+        debugText = debug.GetComponent<DebugLabel>();
+        
+        debugText.Log("Test 2");
     }
 
     void Update()
     {
+        bool isOk = Physics2D.OverlapPoint(GetMouseWorldPos()) == null;
+        MakeTransparentClick(IsPointerOverUi());
+    }
+
+    private bool IsPointerOverUi()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            debugText.Log("True");
+            return true;
+        }
         
+        debugText.Log("True");
+        PointerEventData pointerEvent = new PointerEventData(EventSystem.current);
+        pointerEvent.position = Input.mousePosition;
+
+        List<RaycastResult> hits = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEvent, hits);
+
+        return hits.Count > 0;
+    }
+
+    private static Vector3 GetMouseWorldPos()
+    {
+        Camera cam = Camera.main;
+        Vector3 worldPos;
+        if (cam != null)
+        {
+            worldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+            worldPos.z = 0f;
+        }
+        else
+        {
+            worldPos = Vector3.zero;
+        }
+
+        return worldPos;
+    }
+
+    private void MakeTransparentClick(bool transparent)
+    {
+        if (transparent)
+        {
+            SetWindowLong(WinHandle, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        }
+        else
+        {
+            SetWindowLong(WinHandle, GWL_EXSTYLE, WS_EX_LAYERED);
+        }
     }
 
     private struct MARGINS
