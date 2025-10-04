@@ -19,18 +19,4 @@ public class DebugLabel: MonoBehaviour
             label.text = msg;
         }
     }
-
-    public void Append(string msg)
-    {
-        if (label != null)
-        {
-            label.text += msg + "\n";
-
-            // optional: truncate if too long
-            if (label.text.Length > 2000)
-            {
-                label.text = label.text.Substring(label.text.Length - 2000);
-            }
-        }
-    }
 }
