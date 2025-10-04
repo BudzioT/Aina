@@ -16,7 +16,6 @@ public class ClickTest : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Console.WriteLine("Heyoooo");
-        GetComponent<Transform>().SetLocalPositionAndRotation(new Vector3(10, 10, 10), Quaternion.Euler(20, 40, 50));
+        transform.Rotate(0f, 0f, 30f);
     }
 }
