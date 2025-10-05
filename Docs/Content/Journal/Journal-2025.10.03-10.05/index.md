@@ -52,6 +52,7 @@ Debug.LogError($"Window style set to: {(through ? "click-through" : "normal")}")
 I just turned bit operations into different ones and Logged a lot of stuff... You can say that Debug.LogError almost fixed my code
 <br><br>
 And... <b>It worked!</b> I could finally click through anything on the screen besides visible objects. Success!
+> Video!
 [![Clicking works!](https://hc-cdn.hel1.your-objectstorage.com/s/v3/17a900d19ee3426445509b222c2a127f6d0f020a_image.png)](https://hc-cdn.hel1.your-objectstorage.com/s/v3/769381595577d2c4726db3f503f77656ea538731_clickingworks.mp4)
 
 
@@ -82,6 +83,7 @@ I fought with it for the next ~3 hours. The original code from [the official sit
 <br><br.
 I went through countless debugging sessions, lots of changes and finally, I made some adjustment including addition of sensitivity field and making it work.<br>
 How I made it work? Just... set the character's ``CubismLookController`` Center property to its face.<br> <b>That was too simple and I fought with it so much...</b>
+> Final video for this week!
 [![Final week 1 effect!](./Assets/finalModelWeek1.png)](https://hc-cdn.hel1.your-objectstorage.com/s/v3/49c9d3a7d214c48e3dddec6a22b8893cb1e8004c_finalweek1.mp4)
 
 ## What's next?
