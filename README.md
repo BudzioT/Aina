@@ -14,7 +14,7 @@
 - One model that breaths and... blinks
 - Following cursor with eyes (cause it seems weirdly eerie when the character doesn't move, I might throw some movement later for idle)
 
-![Final week 1 effect!](./Docs/Content/Journal/Journal-2025.10.03-10.05/Assets/finalModelWeek1.png)](https://hc-cdn.hel1.your-objectstorage.com/s/v3/49c9d3a7d214c48e3dddec6a22b8893cb1e8004c_finalweek1.mp4)
+![Final week 1 effect!](https://hc-cdn.hel1.your-objectstorage.com/s/v3/49c9d3a7d214c48e3dddec6a22b8893cb1e8004c_finalweek1.mp4)
 
 
 <h2> What's the plan? </h2>
