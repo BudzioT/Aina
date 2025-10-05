@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
+  m_Name: Hiyori.fadeMotionList
+  m_EditorClassIdentifier: Live2D.Cubism::Live2D.Cubism.Framework.MotionFade.CubismFadeMotionList
+  MotionInstanceIds: a2eafeff78eafeff5ceafeff40eafeff24eafeff08eafeffece9feffd0e9feffb4e9feff98e9feff
+  CubismFadeMotionObjects:
+  - {fileID: 11400000, guid: 213cbc4f58ca32a43b26b355dc5e738b, type: 2}
+  - {fileID: 11400000, guid: c62ca3f6ca5c0b24f8251ebd31dedad7, type: 2}
+  - {fileID: 11400000, guid: 9d6d49a5ce8ff6b458da4bb168669f46, type: 2}
+  - {fileID: 11400000, guid: c23c1ba75984a204d917fcb452bd9bd4, type: 2}
+  - {fileID: 11400000, guid: 66ed1edd448c7fa43ba0285ddae61b6c, type: 2}
+  - {fileID: 11400000, guid: 2c0ed9c18d8be1f4b9fa58ccdce9a74b, type: 2}
+  - {fileID: 11400000, guid: c1b439fa4bf8ae741848784e6cf1eaae, type: 2}
+  - {fileID: 11400000, guid: 8b63d27edc9908f478f2eac08c5dbdb0, type: 2}
+  - {fileID: 11400000, guid: 23b692d0a7d307546bcbc5336cbac8f5, type: 2}
+  - {fileID: 11400000, guid: 7ae867f1445ce7f4993d7e7ebba3d1a7, type: 2}
