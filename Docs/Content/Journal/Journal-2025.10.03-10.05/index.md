@@ -1,4 +1,4 @@
-﻿---
+---
 title: Journal, Week One
 startDate: 2025.10.03
 endDate: 2025.10.05
