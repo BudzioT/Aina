@@ -8,7 +8,8 @@ using UnityEngine.EventSystems;
 public class FloatingWindow : MonoBehaviour
 {
     // Stuff that only works on Windows cause of native API
-#if UNITY_STANDALONE_WIN
+    // Also Unity crashes when running this code in editor
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
     // Self-explanatory name
     [DllImport("User32.dll")]
     private static extern IntPtr GetActiveWindow();
@@ -222,5 +223,5 @@ public class FloatingWindow : MonoBehaviour
         public int cyTopHeight;
         public int cyBottomHeight;
     }
-#endif
+#endif  // UNITY_STANDALONE_WIN && !UNITY_EDITOR
 }
