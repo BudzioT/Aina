@@ -4221,6 +4221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubismLookTarget
   mainCamera: {fileID: 123544677}
+  modelTransform: {fileID: 1807946784}
 --- !u!4 &301645309
 Transform:
   m_ObjectHideFlags: 0
@@ -24427,6 +24428,11 @@ Mesh:
 --- !u!1 &1807946768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8656915460461759146, guid: 43fa90014ef3c1443bcc935100d6c48f, type: 3}
+  m_PrefabInstance: {fileID: 1154602469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1807946784 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1708848783441296111, guid: 43fa90014ef3c1443bcc935100d6c48f, type: 3}
   m_PrefabInstance: {fileID: 1154602469}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1807946785
