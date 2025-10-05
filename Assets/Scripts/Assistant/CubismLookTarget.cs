@@ -5,7 +5,10 @@ using UnityEngine;
 public class CubismLookTarget : MonoBehaviour, ICubismLookTarget
 {
     public Camera mainCamera;
-    public Transform modelTransform;
+    public Transform characterTransform;
+    public float sensitivity = 6f;
+
+    private bool noCharacter = false;
     
     private void Start()
     {
@@ -13,29 +16,44 @@ public class CubismLookTarget : MonoBehaviour, ICubismLookTarget
         {
             mainCamera = Camera.main;
         }
+        
+        if (!characterTransform)
+        {
+            Debug.LogWarning("Character transform not found");
+            noCharacter = true;
+        }
     }
 
     public Vector3 GetPosition()
     {
-        if (!mainCamera || !modelTransform)
+        if (noCharacter)
+        {
             return Vector3.zero;
-
-        // Get mouse position in viewport space (-1..1 range)
-        Vector3 mouseViewport = mainCamera.ScreenToViewportPoint(Input.mousePosition);
-        mouseViewport = (mouseViewport * 2f) - Vector3.one;
-
-        // Adjust based on model position in viewport space
-        Vector3 modelViewport = mainCamera.WorldToViewportPoint(modelTransform.position);
-        modelViewport = (modelViewport * 2f) - Vector3.one;
-
-        // Relative offset from model center
-        Vector3 relative = mouseViewport - modelViewport;
-
-        // Optional sensitivity tweak
-        relative *= 8f;
-
-        // Return the relative position (normalized)
-        return relative;
+        }
+        
+        // Screen positions
+        Vector3 characterScreen = mainCamera.WorldToScreenPoint(characterTransform.position);
+        Vector3 mouseScreen = Input.mousePosition;
+        
+        // Screen space offset to get proper local pos later on
+        Vector2 screenOffset = new Vector2(
+            mouseScreen.x - characterScreen.x,
+            mouseScreen.y - characterScreen.y
+        );
+        
+        // Normalize 
+        screenOffset.x /= Screen.width;
+        screenOffset.y /= Screen.height;
+        
+        // Scale that far as heck scale
+        Vector3 localOffset = new Vector3(screenOffset.x, screenOffset.y, 0) * sensitivity;
+        
+        // Local space of character
+        Vector3 targetLocal = characterTransform.TransformPoint(localOffset);
+        
+        // Debug.LogError($"Char World: {characterTransform.position}, Screen Offset: {screenOffset}, Local Offset: {localOffset}, Target World: {targetLocal}");
+        
+        return targetLocal;
     }
 
     public bool IsActive()
