@@ -33,10 +33,8 @@ public class MoveItem : MonoBehaviour
     // Move character according to offset, works fine!!!!
     private void OnMouseDrag()
     {
+        // World pos is needed! Character location is saved that way, but mouse is in screen pos
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 oldPos = transform.position;
-        
         transform.position = mousePos + offset;
-        Debug.LogError($"Offset: {offset}, Old pos: {oldPos}, New: {transform.position}, MousePos: {mousePos}");
     }
 }
