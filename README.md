@@ -2,7 +2,7 @@
 
 <p align="center">Your 3D model AI assistant, or just a waifu...</p>
 
-> Inspired by inspired by [Neuro-sama](https://www.youtube.com/@Neurosama) and [Project Airi](https://github.com/moeru-ai/airi)
+> Inspired by [Neuro-sama](https://www.youtube.com/@Neurosama) and [Project Airi](https://github.com/moeru-ai/airi)
 
 <p>Okay, I won't make this long, at the moment this project is almost nothing, but I'm gonna make a beautiful readme once we get more stuff working</p>
 
